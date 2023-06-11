@@ -11,10 +11,9 @@ enableInlineShortcodes = true
 ignoreErrors = ["error-remote-getjson"]
 
 [params]
-  copyright = "© homelabwithkevin"
+  copyright = "©2023 homelabwithkevin"
 
 [menu]
-
   [[menu.main]]
     identifier = "about"
     name = "About"
