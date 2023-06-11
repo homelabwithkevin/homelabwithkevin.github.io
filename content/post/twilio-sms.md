@@ -16,7 +16,8 @@ I use this basic architecture to text message myself what TV, Movies, and Books 
 graph LR
     sms --> Twilio --> Lambda --> DynamoDB
 {{< /mermaid >}}
-    
+
+## lambda_function.py
 ```
 import json
 import base64
@@ -59,4 +60,41 @@ def lambda_handler(event, context):
     }
 
     return result
+```
+    
+## dynamodb.py
+    
+```
+# This writes to the DynamoDB.
+import boto3
+
+def write(timestamp, message_type, actual_message, user):
+    client = boto3.client('dynamodb')
+    response = client.update_item(
+        TableName="moveies-tv",
+        Key={
+            'id': {
+                'S': str(timestamp)
+            }
+        },
+        AttributeUpdates={
+            'message_type': {
+                'Value': {
+                    'S': str(message_type)
+                }
+            },
+            'actual_message': {
+                'Value': {
+                    'S': str(actual_message)
+                }
+            },
+            'user': {
+                'Value': {
+                    'S': str(user)
+                }
+            }
+        }
+    )
+
+    return response
 ```
