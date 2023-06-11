@@ -10,4 +10,9 @@ tags = [
 ]
 +++
 
-Creating a basic architecture for Twilio SMS and AWS DynamoDB.
+I use this basic architecture to text message myself what TV, Movies, and Books I've been enjoying.
+
+{{<mermaid align="left" theme="neutral" >}}
+graph LR
+    sms --> Twilio --> Lambda --> DynamoDB
+{{< /mermaid >}}
