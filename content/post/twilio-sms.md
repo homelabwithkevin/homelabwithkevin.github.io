@@ -8,6 +8,7 @@ tags = [
     "sms",
     "aws"
 ]
+draft = true
 +++
 
 I use this basic architecture to text message myself what TV, Movies, and Books I've been enjoying.
