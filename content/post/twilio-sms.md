@@ -17,7 +17,11 @@ graph LR
     sms --> Twilio --> Lambda --> DynamoDB
 {{< /mermaid >}}
 
-## lambda_function.py
+## Code
+Get the latest code here: [GitHub](https://github.com/homelabwithkevin)
+
+## Code Snippets
+### lambda_function.py
 ```
 import json
 import base64
@@ -62,7 +66,7 @@ def lambda_handler(event, context):
     return result
 ```
     
-## dynamodb.py
+### dynamodb.py
     
 ```
 # This writes to the DynamoDB.
