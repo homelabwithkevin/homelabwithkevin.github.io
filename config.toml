@@ -1,17 +1,18 @@
 baseURL = "https://homelabwithkevin.github.io/"
 title = "Homelab with Kevin"
 author = "Kevin"
-copyright = "Copyright © 2023, Kevin - homelabwithkevin"
+copyright = "Copyright © 2024, Kevin - homelabwithkevin"
 paginate = 3
 languageCode = "en"
 DefaultContentLanguage = "en"
 enableInlineShortcodes = true
+
 # prevent build failures when using Hugo's Instagram shortcode due to deprecated Instagram API.
 # See https://github.com/gohugoio/hugo/issues/7228#issuecomment-714490456
 ignoreErrors = ["error-remote-getjson"]
 
 [params]
-  copyright = "©2023 homelabwithkevin"
+  copyright = "©2024 homelabwithkevin"
 
 [menu]
   [[menu.main]]
@@ -20,13 +21,18 @@ ignoreErrors = ["error-remote-getjson"]
     url = "/about/"
     weight = 10
 
+  [[menu.main]]
+    identifier = "donate"
+    name = "Donate"
+    url = "/donate/"
+    weight = 10
+
 [taxonomies]
 category = "categories"
 tag = "tags"
 series = "series"
 
 [privacy]
-
   [privacy.vimeo]
     disabled = false
     simple = true
@@ -45,7 +51,6 @@ series = "series"
     privacyEnhanced = true
 
 [services]
-
   [services.instagram]
     disableInlineCSS = true
 
