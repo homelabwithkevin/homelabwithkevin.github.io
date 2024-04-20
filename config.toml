@@ -21,6 +21,12 @@ ignoreErrors = ["error-remote-getjson"]
     url = "/about/"
     weight = 10
 
+  [[menu.main]]
+    identifier = "donate"
+    name = "Donate"
+    url = "/donate/"
+    weight = 10
+
 [taxonomies]
 category = "categories"
 tag = "tags"
