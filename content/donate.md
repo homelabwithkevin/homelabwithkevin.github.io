@@ -6,4 +6,4 @@ aliases = ["donate"]
 author = "Hugo Authors"
 +++
 
-{{< stripe_link_test >}}
+{{< stripe_link >}}
