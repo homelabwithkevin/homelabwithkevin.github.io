@@ -1,0 +1,66 @@
+package main
+
+import "path"
+import "github.com/gosimple/slug"
+
+templ headerComponent(title string) {
+	<head>
+		<title>{ title }</title>
+		<link href="/css/tailwind.css" rel="stylesheet"/>
+	</head>
+	<div>
+		<div>
+			<a href={ templ.SafeURL(path.Join("/index.html")) }>Home</a>
+		</div>
+	</div>
+}
+
+templ contentComponent(title string, date string, body templ.Component) {
+	<body class="bg-gray-900 text-gray-400">
+		<h1 class="text-center text-3xl font-bold text-red">{ title }</h1>
+		<h3>{ date }</h3>
+		<div class="content bg-gray-900 text-gray-400">
+			@body
+		</div>
+	</body>
+}
+
+templ contentPage(title string, date string, body templ.Component) {
+	<html class="dark">
+		@headerComponent(title)
+		@contentComponent(title, date, body)
+	</html>
+}
+
+templ indexPage(posts []Post) {
+	<html>
+		@headerComponent("Homelab with Kevin")
+		<body class="bg-gray-900 text-gray-400">
+			<h1>Homelab with Kevin</h1>
+				<div>
+					Welcome to my Blog. 
+					<br>
+					I hope to write articles and tutorials on my homelab.
+				</div>
+			<div>
+			
+			<h2>Posts</h2>
+			for _, post := range posts {
+				<div><a href={ templ.SafeURL(path.Join(post.Date.Format("2006/01/02"), slug.Make(post.Title), "/", "index.html")) }>{ post.Title } - { post.Date.Format("Jan 02, 2006") }</a></div>
+			}
+			</div>
+		</body>
+	</html>
+}
+
+templ aboutPage() {
+	<html class="dark">
+		@headerComponent("Homelab with Kevin")
+		<body class="bg-gray-900 text-gray-400">
+			<h1>Homelab with Kevin</h1>
+			<p>
+				About me page
+			</p>
+		</body>
+	</html>
+}
