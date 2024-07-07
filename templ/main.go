@@ -20,10 +20,12 @@ type Post struct {
 	Content string
 }
 
+var local = true
+
 var posts = []Post{
 	{
-		Date:  time.Date(2023, time.April, 18, 0, 0, 0, 0, time.UTC),
-		Title: "Welcome",
+		Date:    time.Date(2023, time.April, 18, 0, 0, 0, 0, time.UTC),
+		Title:   "Welcome",
 		Content: `Welcome to my Blog. I hope to write articles and tutorials on my homelab.`,
 	},
 }
@@ -54,8 +56,9 @@ func main() {
 	if err != nil {
 		log.Fatalf("failed to create output file: %v", err)
 	}
+
 	// Write it out.
-	err = indexPage(posts).Render(context.Background(), f)
+	err = indexPage(posts, local).Render(context.Background(), f)
 	if err != nil {
 		log.Fatalf("failed to write index page: %v", err)
 	}
@@ -85,7 +88,7 @@ func main() {
 		content := Unsafe(buf.String())
 
 		// Use templ to render the template containing the raw HTML.
-		err = contentPage(post.Title, post.Date.Format("Jan 02, 2006"), content).Render(context.Background(), f)
+		err = contentPage(post.Title, post.Date.Format("Jan 02, 2006"), content, local).Render(context.Background(), f)
 		if err != nil {
 			log.Fatalf("failed to write output file: %v", err)
 		}
