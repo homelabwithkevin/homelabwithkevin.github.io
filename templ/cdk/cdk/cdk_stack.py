@@ -6,7 +6,8 @@ from aws_cdk import (
     aws_cloudfront as cloudfront,
     aws_cloudfront_origins as origins,
     aws_s3_deployment as s3deploy,
-    CfnOutput
+    CfnOutput,
+    aws_certificatemanager
 )
 import aws_cdk as cdk
 
@@ -24,7 +25,9 @@ class CdkStack(Stack):
                 viewer_protocol_policy=cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS
             ),
             default_root_object="index.html",
-            geo_restriction=cloudfront.GeoRestriction.allowlist("US")
+            geo_restriction=cloudfront.GeoRestriction.allowlist("US"),
+            domain_names=["homelabwithkevin.com"],
+            certificate=aws_certificatemanager.Certificate.from_certificate_arn(self, "hlb", "arn:aws:acm:us-east-1:654654599343:certificate/65ddc75e-6863-4f23-9c45-ed885672e654")
         )
 
         s3deploy.BucketDeployment(self, "DeployWithInvalidation",
