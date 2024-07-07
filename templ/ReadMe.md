@@ -8,7 +8,7 @@ npx tailwindcss -i ./src/input.css -o ./src/tailwind.css --watch
 ## Deploy
 ### Linux
 ```bash
-    templ generate && rm -rf public/ && go run *.go && cp ./src/tailwind.css ./public/css/tailwind.css
+    source ~/.profile && templ generate && rm -rf public/ && go run *.go && cp ./src/tailwind.css ./public/css/tailwind.css
 ```
 
 ### Windows
