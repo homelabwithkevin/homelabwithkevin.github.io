@@ -18,10 +18,10 @@ templ headerComponent(title string, local bool) {
 	<div class="mt-6 flex justify-center mb-4 mx-4">
 		<div class="grid grid-cols-4 gap-8 md:text-2xl">
 			<div class="col-span-3 justify-left">
-				<a class="font-bold" href={ templ.SafeURL(path.Join("index.html")) }>Homelab with Kevin</a>
+				<a class="font-bold" href={ templ.SafeURL(path.Join("/index.html")) }>Homelab with Kevin</a>
 			</div>
 			<div>
-				<a href="https//docs.homelabwithkevin.com" target="_blank">Docs</a>
+				<a href={ templ.SafeURL("//docs.homelabwithkevin.com")} target="_blank" rel="noreferrer">Docs</a>
 			</div>
 		</div>
 	</div>
@@ -38,7 +38,7 @@ templ contentComponent(title string, date string, body templ.Component) {
 }
 
 templ contentPage(title string, date string, body templ.Component, local bool) {
-	<html class="dark">
+	<html class="bg-slate-950 text-gray-400 mx-4">
 		@headerComponent(title, local)
 		@contentComponent(title, date, body)
 	</html>
