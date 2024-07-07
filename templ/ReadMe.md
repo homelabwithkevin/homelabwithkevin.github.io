@@ -13,7 +13,7 @@ npx tailwindcss -i ./src/input.css -o ./src/tailwind.css --watch
 
 ### Windows
 ```powershell
-    templ generate; del .\public\; go run .
+    templ generate; del .\public\; go run .; copy .\src\tailwind.css .\public\css\tailwind.css
 ```
 
 ## AWS
