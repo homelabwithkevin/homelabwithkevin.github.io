@@ -20,7 +20,7 @@ type Post struct {
 	Content string
 }
 
-var local = true
+var local = false
 
 var posts = []Post{
 	{
